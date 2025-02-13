@@ -41,7 +41,7 @@ const Login = () => {
   };
   return (
     <div className="flex flex-col justify-center items-center mt-20">
-      <h1 className="mb-4 text-3xl">Signup</h1>
+      <h1 className="mb-4 text-3xl">Login</h1>
       <form onSubmit={loginUserHandler} className="flex flex-col gap-3 w-96">
         <input
           type="text"

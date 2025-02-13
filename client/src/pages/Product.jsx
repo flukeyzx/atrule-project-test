@@ -4,6 +4,7 @@ import axios from "axios";
 import Loading from "../components/Loading";
 import { ShoppingCart, Minus, Plus } from "lucide-react";
 import { useSnackbar } from "notistack";
+import { useAuth } from "../context/AuthContext";
 
 const Product = () => {
   const { productId } = useParams();
@@ -13,6 +14,7 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+  const { user } = useAuth();
 
   const fetchProduct = async () => {
     try {
@@ -26,6 +28,9 @@ const Product = () => {
   };
 
   const handleAddToCart = async () => {
+    if (!user) {
+      navigate("/auth/login");
+    }
     if (addingToCart) return;
     setAddingToCart(true);
     try {
